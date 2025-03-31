@@ -1,0 +1,6 @@
+{
+  "rewrites": [
+    { "source": "/free", "destination": "/" },
+    { "source": "/premium", "destination": "/" }
+  ]
+}
