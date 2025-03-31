@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: 'Space Grotesk', sans-serif;
+  background-color: black;
+}
+
+.timeline {
+  position: relative;
+  padding: 2rem 0;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(to bottom, transparent, #ff0000, transparent);
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.timeline-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 4rem 0;
+}
+
+.timeline-content {
+  width: 100%;
+  max-width: 400px;
+  position: relative;
+}
+
+.timeline-content::before {
+  content: '';
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  background: linear-gradient(135deg, #ff0000 0%, #990000 100%);
+  border-radius: 50%;
+  top: 50%;
+  transform: translateY(-50%);
+  box-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
+}
+
+.timeline-content.left {
+  margin-right: 50%;
+  padding-right: 4rem;
+}
+
+.timeline-content.right {
+  margin-left: 50%;
+  padding-left: 4rem;
+}
+
+.timeline-content.left::before {
+  right: -12px;
+}
+
+.timeline-content.right::before {
+  left: -12px;
+}
+
+.toggle-switch {
+  width: 200px;
+  height: 40px;
+  background: rgba(255, 0, 0, 0.1);
+  border: 1px solid rgba(255, 0, 0, 0.2);
+  border-radius: 20px;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.toggle-switch::before {
+  content: '';
+  position: absolute;
+  width: 96px;
+  height: 36px;
+  background: linear-gradient(135deg, #ff0000 0%, #990000 100%);
+  border-radius: 18px;
+  top: 1px;
+  left: 1px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
+}
+
+.toggle-switch.premium::before {
+  left: calc(100% - 97px);
+}
+
+.toggle-text {
+  position: absolute;
+  width: 50%;
+  text-align: center;
+  line-height: 40px;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  text-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
+}
+
+.toggle-text.free {
+  left: 0;
+}
+
+.toggle-text.premium {
+  right: 0;
+}
+
+.card-glow {
+  position: relative;
+}
+
+.card-glow::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  background: linear-gradient(45deg, transparent, rgba(255, 0, 0, 0.3), transparent);
+  border-radius: inherit;
+  z-index: -1;
+  animation: glow 2s linear infinite;
+}
+
+@keyframes glow {
+  0% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.5;
+  }
+}
+
+.footer-gradient {
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+}
