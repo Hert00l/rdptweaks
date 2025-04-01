@@ -175,15 +175,15 @@ function App() {
 
   return (
     <div className="min-h-screen bg-black text-white overflow-hidden">
-      {/* Global Background */}
+      
       <div className="fixed inset-0 z-0">
         <div className="min-h-screen bg-black text-white bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-red-900/40 via-black to-black" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(255,0,0,0.05)_0%,_transparent_100%)]" />
       </div>
 
-      {/* Content */}
+      
       <div className="relative z-10">
-        {/* Navbar */}
+       
         <nav className="fixed w-full z-50 bg-black/80 backdrop-blur-lg border-b border-red-600/20">
           <div className="container mx-auto px-4">
             <div className="flex items-center justify-between h-20">
@@ -226,7 +226,7 @@ function App() {
           </div>
         </nav>
 
-        {/* Hero Section */}
+       
         <section id="home" className="min-h-screen relative flex items-center justify-center">
           <div className="container mx-auto px-4 pt-32">
             <div className="max-w-5xl mx-auto text-center">
@@ -268,7 +268,7 @@ function App() {
           </div>
         </section>
 
-        {/* Features Timeline Section */}
+       
         <section id="features" ref={ref} className="py-32">
           <div className="container mx-auto px-4">
             <motion.div
@@ -333,7 +333,7 @@ function App() {
             </div>
           </div>
         </section>
-        {/* Stats Section */}
+       
         <section>
           <div className="container mx-auto px-4">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -369,7 +369,7 @@ function App() {
                 </div>
               </motion.div>
 
-              {/* Purchases Stats */}
+            
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -403,7 +403,7 @@ function App() {
             </div>
           </div>
         </section>
-        {/* Download Section */}
+       
         <section id="download" className="py-32">
           <div className="container mx-auto px-4">
             <h2 className="text-3xl font-bold text-center mb-16">Choose Your Plan</h2>
@@ -516,7 +516,7 @@ function App() {
           </div>
         </section>
 
-        {/* FAQ Section */}
+        
         <section id="faq" className="py-20">
           <div className="container mx-auto px-4">
             <h2 className="text-3xl font-bold text-center mb-16">FAQ</h2>
