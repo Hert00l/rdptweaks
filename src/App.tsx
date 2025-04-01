@@ -259,7 +259,7 @@ function App() {
               >
                 <div className="absolute inset-0 bg-red-500/30 rounded-xl blur-2xl group-hover:bg-red-500/50 transition-all duration-500" />
                 <img
-                  src="hthttps://sigmawire.net/i/04/fWPqNO.png"
+                  src="https://sigmawire.net/i/04/fWPqNO.png"
                   alt="Gaming Setup Preview"
                   className="relative rounded-xl border border-red-500/20 group-hover:border-red-500/50 transition-all duration-500 transform group-hover:scale-[1.02]"
                 />
