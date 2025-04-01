@@ -3,7 +3,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Download, Star, Menu, X, ChevronDown, ChevronUp, MessageSquare, FileSearch, Palette, Code, CheckCircle, Rocket, Flame } from 'lucide-react';
 import { Footer } from './Footer';
-import { Reviews } from './Reviews';
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -382,7 +381,7 @@ function App() {
             </div>
           </div>
         </section>
-      <Reviews />
+
         {/* FAQ Section */}
         <section id="faq" className="py-20">
           <div className="container mx-auto px-4">
