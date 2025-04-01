@@ -4,6 +4,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import App from './App.tsx';
 import Navbar from './navbar.tsx';
 import Footer from './Footer.tsx';
+import Reviews from './Reviews.tsx';
 import { Free } from './free.tsx';
 import { Premium } from './premium.tsx';
 import { TOS } from './TOS.tsx';
