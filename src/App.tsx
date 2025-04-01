@@ -333,7 +333,76 @@ function App() {
             </div>
           </div>
         </section>
+        {/* Stats Section */}
+        <section className="py-20 bg-black/30">
+          <div className="container mx-auto px-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {/* Downloads Stats */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="relative group"
+              >
+                <div className="absolute inset-0 bg-red-500/10 rounded-xl blur-lg group-hover:bg-red-500/20 transition-all duration-500"></div>
+                <div className="relative border border-white/10 rounded-xl p-8 backdrop-blur-sm group-hover:border-red-500/50 transition-all duration-500">
+                  <div className="flex items-center gap-4 mb-6">
+                    <Users className="w-12 h-12 text-red-500" />
+                    <div>
+                      <h3 className="text-6xl font-bold text-white mb-2">125K+</h3>
+                      <p className="text-gray-400 text-xl">Downloads</p>
+                    </div>
+                  </div>
+                  <div className="h-[70px] overflow-hidden relative">
+                    <AnimatePresence mode="popLayout">
+                      <motion.div
+                        key={currentReviewIndex}
+                        initial={{ opacity: 0, y: 50 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -70 }}
+                        transition={{ duration: 0.5, ease: "easeInOut" }}
+                      >
+                        <ReviewCard review={reviews[currentReviewIndex]} />
+                      </motion.div>
+                    </AnimatePresence>
+                  </div>
+                </div>
+              </motion.div>
 
+              {/* Purchases Stats */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="relative group"
+              >
+                <div className="absolute inset-0 bg-red-500/10 rounded-xl blur-lg group-hover:bg-red-500/20 transition-all duration-500"></div>
+                <div className="relative border border-white/10 rounded-xl p-8 backdrop-blur-sm group-hover:border-red-500/50 transition-all duration-500">
+                  <div className="flex items-center gap-4 mb-6">
+                    <ShoppingCart className="w-12 h-12 text-red-500" />
+                    <div>
+                      <h3 className="text-6xl font-bold text-white mb-2">50K+</h3>
+                      <p className="text-gray-400 text-xl">Premium Users</p>
+                    </div>
+                  </div>
+                  <div className="h-[70px] overflow-hidden relative">
+                    <AnimatePresence mode="popLayout">
+                      <motion.div
+                        key={currentReviewIndex}
+                        initial={{ opacity: 0, y: 50 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -70 }}
+                        transition={{ duration: 0.5, ease: "easeInOut" }}
+                      >
+                        <ReviewCard review={reviews[(currentReviewIndex + 2) % reviews.length]} />
+                      </motion.div>
+                    </AnimatePresence>
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+          </div>
+        </section>
         {/* Download Section */}
         <section id="download" className="py-32">
           <div className="container mx-auto px-4">
@@ -442,77 +511,6 @@ function App() {
                 >
                   Learn More
                 </a>
-              </motion.div>
-            </div>
-          </div>
-        </section>
-
-        {/* Stats Section */}
-        <section className="py-20 bg-black/30">
-          <div className="container mx-auto px-4">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {/* Downloads Stats */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                className="relative group"
-              >
-                <div className="absolute inset-0 bg-red-500/10 rounded-xl blur-lg group-hover:bg-red-500/20 transition-all duration-500"></div>
-                <div className="relative border border-white/10 rounded-xl p-8 backdrop-blur-sm group-hover:border-red-500/50 transition-all duration-500">
-                  <div className="flex items-center gap-4 mb-6">
-                    <Users className="w-12 h-12 text-red-500" />
-                    <div>
-                      <h3 className="text-6xl font-bold text-white mb-2">125K+</h3>
-                      <p className="text-gray-400 text-xl">Downloads</p>
-                    </div>
-                  </div>
-                  <div className="h-[70px] overflow-hidden relative">
-                    <AnimatePresence mode="popLayout">
-                      <motion.div
-                        key={currentReviewIndex}
-                        initial={{ opacity: 0, y: 50 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -70 }}
-                        transition={{ duration: 0.5, ease: "easeInOut" }}
-                      >
-                        <ReviewCard review={reviews[currentReviewIndex]} />
-                      </motion.div>
-                    </AnimatePresence>
-                  </div>
-                </div>
-              </motion.div>
-
-              {/* Purchases Stats */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                className="relative group"
-              >
-                <div className="absolute inset-0 bg-red-500/10 rounded-xl blur-lg group-hover:bg-red-500/20 transition-all duration-500"></div>
-                <div className="relative border border-white/10 rounded-xl p-8 backdrop-blur-sm group-hover:border-red-500/50 transition-all duration-500">
-                  <div className="flex items-center gap-4 mb-6">
-                    <ShoppingCart className="w-12 h-12 text-red-500" />
-                    <div>
-                      <h3 className="text-6xl font-bold text-white mb-2">50K+</h3>
-                      <p className="text-gray-400 text-xl">Premium Users</p>
-                    </div>
-                  </div>
-                  <div className="h-[70px] overflow-hidden relative">
-                    <AnimatePresence mode="popLayout">
-                      <motion.div
-                        key={currentReviewIndex}
-                        initial={{ opacity: 0, y: 50 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -70 }}
-                        transition={{ duration: 0.5, ease: "easeInOut" }}
-                      >
-                        <ReviewCard review={reviews[(currentReviewIndex + 2) % reviews.length]} />
-                      </motion.div>
-                    </AnimatePresence>
-                  </div>
-                </div>
               </motion.div>
             </div>
           </div>
