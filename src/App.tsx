@@ -499,7 +499,7 @@ function App() {
                       <p className="text-gray-400 text-xl">Premium Users</p>
                     </div>
                   </div>
-                  <div className="h-[120px] overflow-hidden relative">
+                  <div className="h-[90px] overflow-hidden relative">
                     <AnimatePresence mode="popLayout">
                       <motion.div
                         key={currentReviewIndex}
