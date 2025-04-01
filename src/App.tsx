@@ -1,14 +1,71 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { Download, Star, Menu, X, ChevronDown, ChevronUp, MessageSquare, FileSearch, Palette, Code, CheckCircle, Rocket, Flame } from 'lucide-react';
+import { Download, Star, Menu, X, ChevronDown, ChevronUp, MessageSquare, FileSearch, Palette, Code, CheckCircle, Rocket, Flame, Users, ShoppingCart } from 'lucide-react';
 import { Footer } from './Footer';
+
+const reviews = [
+  {
+    id: 1,
+    name: "Alex M.",
+    image: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=100&h=100&fit=crop",
+    text: "Amazing performance boost!",
+    rating: 5
+  },
+  {
+    id: 2,
+    name: "Sarah K.",
+    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop",
+    text: "Best optimization tool ever!",
+    rating: 5
+  },
+  {
+    id: 3,
+    name: "Michael R.",
+    image: "https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=100&h=100&fit=crop",
+    text: "Worth every penny!",
+    rating: 5
+  },
+  {
+    id: 4,
+    name: "David L.",
+    image: "https://images.unsplash.com/photo-1527980965255-d3b416303d12?w=100&h=100&fit=crop",
+    text: "Premium features are incredible!",
+    rating: 5
+  }
+];
+
+function ReviewCard({ review }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -20 }}
+      className="flex items-center gap-2 mb-4"
+    >
+      <img
+        src={review.image}
+        alt={review.name}
+        className="w-10 h-10 rounded-full"
+      />
+      <div>
+        <p className="text-white">{review.text}</p>
+        <div className="flex text-red-500">
+          {[...Array(review.rating)].map((_, i) => (
+            <Star key={i} className="w-4 h-4 fill-current" />
+          ))}
+        </div>
+      </div>
+    </motion.div>
+  );
+}
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [expandedFaq, setExpandedFaq] = useState<number | null>(null);
   const [loading, setLoading] = useState(true);
   const [isPremium, setIsPremium] = useState(false);
+  const [currentReviewIndex, setCurrentReviewIndex] = useState(0);
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.2
@@ -78,6 +135,14 @@ function App() {
     return () => clearTimeout(timer);
   }, []);
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentReviewIndex((prev) => (prev + 1) % reviews.length);
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, []);
+
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -120,46 +185,46 @@ function App() {
       <div className="relative z-10">
         {/* Navbar */}
         <nav className="fixed w-full z-50 bg-black/80 backdrop-blur-lg border-b border-red-600/20">
-  <div className="container mx-auto px-4">
-    <div className="flex items-center justify-between h-20">
-      <a href="https://sigmawire.net/i/03/xLiVze.png">
-        <img src="https://sigmawire.net/i/03/xLiVze.png" alt="RDP Tweaks Logo" className="h-24" />
-      </a>
-      
-      <button 
-        onClick={() => setIsMenuOpen(!isMenuOpen)}
-        className="md:hidden text-white hover:text-red-600 transition-colors"
-      >
-        {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-      </button>
+          <div className="container mx-auto px-4">
+            <div className="flex items-center justify-between h-20">
+              <a href="https://sigmawire.net/i/03/xLiVze.png">
+                <img src="https://sigmawire.net/i/03/xLiVze.png" alt="RDP Tweaks Logo" className="h-24" />
+              </a>
+              
+              <button 
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                className="md:hidden text-white hover:text-red-600 transition-colors"
+              >
+                {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              </button>
 
-      <div className="hidden md:flex items-center space-x-10">
-        <button onClick={() => scrollToSection('home')} className="text-lg text-white hover:text-red-600 transition-colors">Home</button>
-        <button onClick={() => scrollToSection('features')} className="text-lg text-white hover:text-red-600 transition-colors">Features</button>
-        <button onClick={() => scrollToSection('download')} className="text-lg text-white hover:text-red-600 transition-colors">Download</button>
-        <button onClick={() => scrollToSection('faq')} className="text-lg text-white hover:text-red-600 transition-colors">FAQ</button>
-      </div>
-    </div>
+              <div className="hidden md:flex items-center space-x-10">
+                <button onClick={() => scrollToSection('home')} className="text-lg text-white hover:text-red-600 transition-colors">Home</button>
+                <button onClick={() => scrollToSection('features')} className="text-lg text-white hover:text-red-600 transition-colors">Features</button>
+                <button onClick={() => scrollToSection('download')} className="text-lg text-white hover:text-red-600 transition-colors">Download</button>
+                <button onClick={() => scrollToSection('faq')} className="text-lg text-white hover:text-red-600 transition-colors">FAQ</button>
+              </div>
+            </div>
 
-    <AnimatePresence>
-      {isMenuOpen && (
-        <motion.div 
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -20 }}
-          className="md:hidden py-4"
-        >
-          <div className="flex flex-col space-y-4">
-            <button onClick={() => scrollToSection('home')} className="text-white hover:text-red-600 transition-colors">Home</button>
-            <button onClick={() => scrollToSection('features')} className="text-white hover:text-red-600 transition-colors">Features</button>
-            <button onClick={() => scrollToSection('download')} className="text-white hover:text-red-600 transition-colors">Download</button>
-            <button onClick={() => scrollToSection('faq')} className="text-white hover:text-red-600 transition-colors">FAQ</button>
+            <AnimatePresence>
+              {isMenuOpen && (
+                <motion.div 
+                  initial={{ opacity: 0, y: -20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  className="md:hidden py-4"
+                >
+                  <div className="flex flex-col space-y-4">
+                    <button onClick={() => scrollToSection('home')} className="text-white hover:text-red-600 transition-colors">Home</button>
+                    <button onClick={() => scrollToSection('features')} className="text-white hover:text-red-600 transition-colors">Features</button>
+                    <button onClick={() => scrollToSection('download')} className="text-white hover:text-red-600 transition-colors">Download</button>
+                    <button onClick={() => scrollToSection('faq')} className="text-white hover:text-red-600 transition-colors">FAQ</button>
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
-        </motion.div>
-      )}
-    </AnimatePresence>
-  </div>
-</nav>
+        </nav>
 
         {/* Hero Section */}
         <section id="home" className="min-h-screen relative flex items-center justify-center">
@@ -377,6 +442,77 @@ function App() {
                 >
                   Learn More
                 </a>
+              </motion.div>
+            </div>
+          </div>
+        </section>
+
+        {/* Stats Section */}
+        <section className="py-20 bg-black/30">
+          <div className="container mx-auto px-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {/* Downloads Stats */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="relative group"
+              >
+                <div className="absolute inset-0 bg-red-500/10 rounded-xl blur-lg group-hover:bg-red-500/20 transition-all duration-500"></div>
+                <div className="relative border border-white/10 rounded-xl p-8 backdrop-blur-sm group-hover:border-red-500/50 transition-all duration-500">
+                  <div className="flex items-center gap-4 mb-6">
+                    <Users className="w-12 h-12 text-red-500" />
+                    <div>
+                      <h3 className="text-6xl font-bold text-white mb-2">125K+</h3>
+                      <p className="text-gray-400 text-xl">Downloads</p>
+                    </div>
+                  </div>
+                  <div className="h-[120px] overflow-hidden relative">
+                    <AnimatePresence mode="popLayout">
+                      <motion.div
+                        key={currentReviewIndex}
+                        initial={{ opacity: 0, y: 50 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -70 }}
+                        transition={{ duration: 0.5, ease: "easeInOut" }}
+                      >
+                        <ReviewCard review={reviews[currentReviewIndex]} />
+                      </motion.div>
+                    </AnimatePresence>
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* Purchases Stats */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="relative group"
+              >
+                <div className="absolute inset-0 bg-red-500/10 rounded-xl blur-lg group-hover:bg-red-500/20 transition-all duration-500"></div>
+                <div className="relative border border-white/10 rounded-xl p-8 backdrop-blur-sm group-hover:border-red-500/50 transition-all duration-500">
+                  <div className="flex items-center gap-4 mb-6">
+                    <ShoppingCart className="w-12 h-12 text-red-500" />
+                    <div>
+                      <h3 className="text-6xl font-bold text-white mb-2">50K+</h3>
+                      <p className="text-gray-400 text-xl">Premium Users</p>
+                    </div>
+                  </div>
+                  <div className="h-[120px] overflow-hidden relative">
+                    <AnimatePresence mode="popLayout">
+                      <motion.div
+                        key={currentReviewIndex}
+                        initial={{ opacity: 0, y: 50 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -70 }}
+                        transition={{ duration: 0.5, ease: "easeInOut" }}
+                      >
+                        <ReviewCard review={reviews[(currentReviewIndex + 2) % reviews.length]} />
+                      </motion.div>
+                    </AnimatePresence>
+                  </div>
+                </div>
               </motion.div>
             </div>
           </div>
