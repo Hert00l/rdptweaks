@@ -334,7 +334,7 @@ function App() {
           </div>
         </section>
         {/* Stats Section */}
-        <section className="py-20 bg-black/30">
+        <section>
           <div className="container mx-auto px-4">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {/* Downloads Stats */}
