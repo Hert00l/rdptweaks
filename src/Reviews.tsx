@@ -63,7 +63,7 @@ function ReviewCard({ review }) {
   );
 }
 
-function App() {
+function Reviews() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [expandedFaq, setExpandedFaq] = useState<number | null>(null);
   const [loading, setLoading] = useState(true);
@@ -198,4 +198,4 @@ function App() {
   );
 }
 
-export default App;
+export default Reviews;
