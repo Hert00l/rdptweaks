@@ -187,8 +187,8 @@ function App() {
         <nav className="fixed w-full z-50 bg-black/80 backdrop-blur-lg border-b border-red-600/20">
           <div className="container mx-auto px-4">
             <div className="flex items-center justify-between h-20">
-              <a href="https://sigmawire.net/i/03/xLiVze.png">
-                <img src="https://sigmawire.net/i/03/xLiVze.png" alt="RDP Tweaks Logo" className="h-24" />
+              <a href="https://sigmawire.net/i/04/fWPqNO.png">
+                <img src="https://sigmawire.net/i/04/fWPqNO.png" alt="RDP Tweaks Logo" className="h-24" />
               </a>
               
               <button 
